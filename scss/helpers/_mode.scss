@@ -1,0 +1,33 @@
+body[mode="light"] {
+	--nav: #d1d1d1;
+	--font: #181818;
+	--search-bar: #f1f1f1;
+	--search-border: rgba(0 0 0 / 0.7);
+	--hover: #c9c9c9;
+	--hover-profile: #e2e2e2;
+	--paragrapgh: #6c6c6c;
+	--search-hover: #e4e4e4;
+	--menu-hover: #f5f6f7;
+	--list-border: rgba(0 0 0 / 0.1);
+	--menu-list: #fff;
+	--img-border: rgba(0 0 0 / 0.2);
+	--blue: #005fb8;
+	--main: var(--theme-clr-500);
+	--popup: #fff;
+}
+body[mode="dark"] {
+	--nav: #232323;
+	--font: #ffffff;
+	--hover: #323232;
+	--search-bar: #212121;
+	--search-border: #9a9a9a;
+	--hover-profile: #202020;
+	--paragrapgh: #6c6c6c;
+	--list-border: rgba(255 255 255 / 0.1);
+	--menu-list: #212121;
+	--menu-hover: #3d3d40;
+	--img-border: rgba(255 255 255 / 0.2);
+	--blue: #76b9ed;
+	--main: #1c1c1c;
+	--popup: #242426;
+}

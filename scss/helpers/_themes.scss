@@ -1,0 +1,33 @@
+body[theme="green"] {
+	--theme-clr-900: #07281a;
+	--theme-clr-800: #0d5035;
+	--theme-clr-700: #14774f;
+	--theme-clr-600: #1a9f6a;
+	--theme-clr-500: #21c784;
+	--theme-clr-400: #4dd29d;
+	--theme-clr-300: #7addb5;
+	--theme-clr-200: #a6e9ce;
+	--theme-clr-100: #d3f4e6;
+}
+body[theme="blue"] {
+	--theme-clr-900: #071228;
+	--theme-clr-800: #0d2450;
+	--theme-clr-700: #143777;
+	--theme-clr-600: #1a499f;
+	--theme-clr-500: #215dc7;
+	--theme-clr-400: #4d7dd2;
+	--theme-clr-300: #7a9edd;
+	--theme-clr-200: #a6bee9;
+	--theme-clr-100: #d3dff4;
+}
+body[theme="purple"] {
+	--theme-clr-900: #13072c;
+	--theme-clr-800: #260e58;
+	--theme-clr-700: #3a1684;
+	--theme-clr-600: #4d1db0;
+	--theme-clr-500: #6024dc;
+	--theme-clr-400: #8050e3;
+	--theme-clr-300: #a07cea;
+	--theme-clr-200: #bfa7f1;
+	--theme-clr-100: #dfd3f8;
+}

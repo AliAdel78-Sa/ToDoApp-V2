@@ -1,0 +1,26 @@
+.overlay#delete-list-overlay,
+.overlay.nav-overlay {
+	transition: 0.3s all ease;
+	background-color: rgba(0 0 0 / 0.5);
+}
+.overlay#listOverlay {
+	transition: none;
+	z-index: 5;
+}
+.overlay#listOverlay.active {
+	opacity: 1;
+	pointer-events: all;
+}
+.overlay#delete-list-overlay {
+	z-index: 10;
+}
+.overlay.nav-overlay {
+	z-index: 3;
+}
+#delete-list-overlay.pop {
+	opacity: 1;
+	pointer-events: all;
+	.pop-up-container {
+		opacity: 1;
+	}
+}

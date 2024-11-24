@@ -1,0 +1,154 @@
+@use "../helpers/themes" as *;
+@use "../helpers/mode" as *;
+@use "../helpers/mixins" as *;
+nav {
+	width: 280px;
+	height: 100%;
+	background-color: var(--nav);
+	color: var(--font);
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto auto auto 1fr auto;
+	padding-top: 20px;
+	padding-inline: 5px;
+	cursor: default;
+	position: relative;
+	left: 0;
+	z-index: 4;
+	transition: 0.3s ease all;
+}
+
+.profile-info {
+	display: flex;
+	gap: 12px;
+	padding: 10px 10px 0;
+	border-radius: 5px;
+	img {
+		border-radius: 50%;
+		vertical-align: middle;
+		border: 1px solid var(--img-border);
+	}
+	div {
+		display: flex;
+		justify-content: center;
+		flex-flow: column;
+	}
+	h1 {
+		font-weight: 600;
+		font-size: 15px;
+	}
+	p {
+		font-size: 13px;
+		color: var(--paragrapgh);
+	}
+	&:hover {
+		background-color: var(--hover-profile);
+	}
+}
+
+.search-bar {
+	background-color: var(--search-bar);
+	width: 90%;
+	margin: 10px auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 5px;
+	border-radius: 3px;
+	box-shadow: 0 0 10px 1px rgba(0 0 0 / 0.1);
+	border: 1px solid rgba(255 255 255 / 0.1);
+	border-bottom: 1px solid var(--search-border);
+	input {
+		border: none;
+		width: 90%;
+		padding: 0 5px;
+		outline: none;
+		font-size: 14px;
+		background-color: transparent;
+		color: var(--font);
+	}
+	div {
+		width: 10%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		opacity: 0.7;
+	}
+	&:hover {
+		background-color: var(--search-hover);
+	}
+	&:focus {
+		border-bottom: 1px solid blue;
+	}
+}
+
+#mainLists {
+	border-bottom: 1px solid var(--list-border);
+	li {
+		@extend .list-item;
+	}
+}
+
+#listsContainer {
+	overflow-y: auto;
+	display: flex;
+	flex-flow: column;
+	li {
+		@extend .list-item;
+	}
+}
+
+footer {
+	display: flex;
+	border-radius: 5px;
+	gap: 5px;
+	width: 100%;
+	.add-list-btn {
+		width: 80%;
+		display: flex;
+		padding: 10px 5px;
+		border-radius: 5px;
+		gap: 10px;
+		&:hover {
+			background-color: var(--hover);
+		}
+	}
+	.icon {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 20%;
+		border-radius: 5px;
+		&:hover {
+			background-color: var(--hover);
+		}
+	}
+}
+
+#menu,
+#close {
+	display: none;
+}
+
+@media (max-width: 800px) {
+	nav {
+		position: absolute;
+		grid-template-rows: auto auto auto auto 1fr auto;
+		left: -280px;
+	}
+	nav.opened {
+		left: 0;
+	}
+	nav.opened ~ .nav-overlay {
+		opacity: 1;
+		pointer-events: all;
+	}
+	.nav-overlay.display {
+		opacity: 0;
+		pointer-events: none;
+	}
+	#menu,
+	#close {
+		display: flex;
+	}
+}

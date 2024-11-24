@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Meta Tags -->
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="To Do List Application" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<!-- CSS Main StyleSheet -->
+		<link rel="stylesheet" href="css/styles.css" />
+		<!-- Icons -->
+		<link rel="stylesheet" href="assets/icons/all.min.css" />
+		<link
+			href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+			rel="stylesheet"
+		/>
+		<link rel="icon" href="assets/imgs/spider.jpg" />
+		<script src="assets/icons/all.min.js"></script>
+		<title>To Do App</title>
+	</head>
+	<body theme="blue" mode="dark">
+		<div id="preloader">
+			<span class="loader"></span>
+		</div>
+		<!-- Overlays -->
+
+		<div class="overlay" id="listOverlay"></div>
+		<div class="overlay" id="delete-list-overlay">
+			<div class="pop-up-container">
+				<h2>Delete List</h2>
+				<p id="delete-list-title"></p>
+				<div class="btns">
+					<button class="delete-btn" id="delete-list" tabindex="0">
+						Delete
+					</button>
+					<button
+						class="cancel-btn"
+						id="cancel-list-btn"
+						tabindex="0"
+					>
+						Cancel
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="overlay" id="task-overlay">
+			<div class="pop-up-container">
+				<h2>Delete Task</h2>
+				<p>"Task" will be permanently deleted</p>
+				<div class="btns">
+					<button class="delete-btn" tabindex="0">Delete</button>
+					<button class="cancel-btn" tabindex="0">Cancel</button>
+				</div>
+			</div>
+		</div>
+		<div class="overlay" id="delete-all-overlay">
+			<div class="pop-up-container">
+				<h2>Delete All Tasks</h2>
+				<p>Are you sure? all Tasks will be permanently deleted</p>
+				<div class="btns">
+					<button class="delete-btn" tabindex="0">Delete</button>
+					<button class="cancel-btn" tabindex="0">Cancel</button>
+				</div>
+			</div>
+		</div>
+		<!-- Navigation Bar -->
+		<nav>
+			<!-- Burger Menu For Mobile Devices -->
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				height="30px"
+				id="close"
+				viewBox="0 -960 960 960"
+				width="30px"
+				fill="var(--font)"
+				style="margin: 0 0 0px 15px"
+			>
+				<path
+					d="M144-264	v-72h672v72H144Zm0-180v-72h672v72H144Zm0-180v-72h672v72H144Z"
+				/>
+			</svg>
+			<!-- Profile Information -->
+			<div class="profile-info">
+				<div>
+					<img
+						src="assets/imgs/spider.jpg"
+						alt=""
+						loading="lazy"
+						width="50"
+						height="50"
+					/>
+				</div>
+				<div>
+					<h1>Ali Adel</h1>
+					<p>alya70934@gmail.com</p>
+				</div>
+			</div>
+			<!-- Search Bar -->
+			<div class="search-bar">
+				<input type="text" placeholder="Search" id="search-bar" />
+				<div>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						height="20px"
+						viewBox="0 -960 960 960"
+						width="20px"
+						fill="var(--font)"
+						style="rotate: 90deg"
+					>
+						<path
+							d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"
+						/>
+					</svg>
+				</div>
+			</div>
+			<!-- Main Lists -->
+			<ul id="mainLists"></ul>
+			<!-- Secondry Lists -->
+			<ul id="listsContainer"></ul>
+			<!-- Add List Btn and Settings -->
+			<footer class="list-btn-container">
+				<div class="add-list-btn" id="listBtn">
+					<div class="icon">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							height="22px"
+							viewBox="0 -960 960 960"
+							width="22px"
+							fill="currentColor"
+						>
+							<path
+								d="M450-450.5H206.67v-60H450v-243.33h60v243.33h243.33v60H510v243.33h-60V-450.5Z"
+							/>
+						</svg>
+					</div>
+					<div class="text">New List</div>
+				</div>
+				<div class="icon">
+					<i class="fa-solid fa-gear"></i>
+				</div>
+			</footer>
+			<!-- List Options Menu -->
+		</nav>
+		<div class="overlay nav-overlay"></div>
+		<div class="list-options-menu">
+			<div class="item" id="renameListOption">
+				<div class="icon">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						height="20px"
+						viewBox="0 -960 960 960"
+						width="20px"
+						fill="var(--font)"
+					>
+						<path
+							d="M260-320q47 0 91.5 10.5T440-278v-394q-41-24-87-36t-93-12q-36 0-71.5 7T120-692v396q35-12 69.5-18t70.5-6Zm260 42q44-21 88.5-31.5T700-320q36 0 70.5 6t69.5 18v-396q-33-14-68.5-21t-71.5-7q-47 0-93 12t-87 36v394Zm-40 118q-48-38-104-59t-116-21q-42 0-82.5 11T100-198q-21 11-40.5-1T40-234v-482q0-11 5.5-21T62-752q46-24 96-36t102-12q58 0 113.5 15T480-740q51-30 106.5-45T700-800q52 0 102 12t96 36q11 5 16.5 15t5.5 21v482q0 23-19.5 35t-40.5 1q-37-20-77.5-31T700-240q-60 0-116 21t-104 59ZM280-494Z"
+						/>
+					</svg>
+				</div>
+				<div class="text">Rename list</div>
+			</div>
+			<div class="item" id="pinListOption">
+				<div class="icon">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						height="20px"
+						viewBox="0 -960 960 960"
+						width="20px"
+						fill="var(--font)"
+						id="keepOff"
+					>
+						<path
+							d="M680-840v80h-40v327l-80-80v-247H400v87l-87-87-33-33v-47h400ZM480-40l-40-40v-240H240v-80l80-80v-46L56-792l56-56 736 736-58 56-264-264h-6v240l-40 40ZM354-400h92l-44-44-2-2-46 46Zm126-193Zm-78 149Z"
+						/>
+					</svg>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						height="20px"
+						viewBox="0 -960 960 960"
+						width="20px"
+						fill="var(--font)"
+						id="keep"
+					>
+						<path
+							d="m640-480 80 80v80H520v240l-40 40-40-40v-240H240v-80l80-80v-280h-40v-80h400v80h-40v280Zm-286 80h252l-46-46v-314H400v314l-46 46Zm126 0Z"
+						/>
+					</svg>
+				</div>
+				<div class="text" id="pin-unpin">Pin list</div>
+			</div>
+			<div class="item delete-item" id="deleteListBtn">
+				<div class="icon">
+					<i class="fa-regular fa-trash-can"></i>
+				</div>
+				<div class="text">Delete list</div>
+			</div>
+		</div>
+		<!-- Main Content -->
+		<main>
+			<!-- Burger Menu For Mobile Devices -->
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				height="30px"
+				id="menu"
+				viewBox="0 -960 960 960"
+				width="30px"
+				fill="var(--font)"
+			>
+				<path
+					d="M144-264v-72h672v72H144Zm0-180v-72h672v72H144Zm0-180v-72h672v72H144Z"
+				/>
+			</svg>
+			<h1 id="pageTitle"></h1>
+			<input
+				type="text"
+				id="renameInputField"
+				autocomplete="off"
+				spellcheck="false"
+				style="display: none"
+			/>
+
+			<!-- <div class="wrapper">
+				<img src="assets/imgs/beach.jpg" alt=""  width="40" height="40"  loading="lazy"/>
+				<img src="assets/imgs/cities.jpg" alt="" width="40" height="40"   loading="lazy"/>
+				<img src="assets/imgs/forest.jpg" alt=""  width="40" height="40" loading="lazy" />
+				<img src="assets/imgs/universe.jpg" alt=""  width="40" height="40" loading="lazy" />
+				<img src="assets/imgs/flowers(2).jpg" alt="" width="40" height="40"  loading="lazy" />
+				<img src="assets/imgs/flowers.jpg" alt="" width="40" height="40"   loading="lazy"/>
+			</div> -->
+		</main>
+		<script type="module" src="js/app.js"></script>
+		<script type="module" src="js/modules/elements.js"></script>
+	</body>
+</html>

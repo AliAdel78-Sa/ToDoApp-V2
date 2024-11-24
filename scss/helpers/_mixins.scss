@@ -1,0 +1,45 @@
+.list-item {
+	display: flex;
+	gap: 20px;
+	padding: 10px 15px;
+	border-radius: 3px;
+	font-size: 14px;
+	position: relative;
+	margin: 5px 0;
+	width: 100%;
+	// transition: 0.2s ease all;
+	div {
+		display: flex;
+		align-items: center;
+	}
+	.text {
+		width: 18ch;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		display: inline-block;
+	}
+	.icon {
+		color: var(--font);
+		opacity: 0.8;
+		font-size: 20px;
+	}
+	&:hover,
+	&.active {
+		background-color: var(--hover);
+	}
+	&.active::before {
+		content: "";
+		position: absolute;
+		width: 3px;
+		height: 40%;
+		background-color: var(--blue);
+		border-radius: 27%;
+		top: 50%;
+		transform: translateY(-50%);
+		left: 3px;
+	}
+	&.pinned {
+		order: -1;
+	}
+}

@@ -1,0 +1,48 @@
+@use "../helpers/themes" as *;
+@use "../helpers/mode" as *;
+.list-options-menu {
+	opacity: 0;
+	pointer-events: none;
+	position: absolute;
+	z-index: 11;
+	width: fit-content;
+	left: 140px;
+	width: 266px;
+	transform: translate(-50%, -100%);
+	transition: 0.4s ease transform, 0.2s ease opacity;
+	top: 0;
+	color: var(--font);
+	background-color: var(--menu-list);
+	border-radius: 5px;
+	box-shadow: 0 5px 10px 3px rgba(0, 0, 0, 0.3);
+	overflow: auto;
+	border: 1px solid rgba(255 255 255 / 0.1);
+	.item {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+		padding: 10px 20px;
+		.icon {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		&:hover {
+			background-color: var(--menu-hover);
+		}
+	}
+	.delete-item {
+		border-top: 1px solid var(--list-border);
+		color: #e04444;
+		.icon {
+			height: 20px;
+			width: 20px;
+		}
+	}
+}
+
+.list-options-menu.active {
+	opacity: 1;
+	pointer-events: all;
+	transform: translate(-50%, -120%);
+}
